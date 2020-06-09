@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="stoch3_urdf">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="3.95" />
+      <inertia
+        ixx="0.0082534"
+        ixy="0"
+        ixz="0"
+        iyy="0.01565"
+        iyz="0"
+        izz="0.020188" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+         <box size="0.4 0.21 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="FLA_link">
+    <inertial>
+      <origin
+        xyz="0.38527 0.0017672 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.742" />
+      <inertia
+        ixx="0.00063635"
+        ixy="0"
+        ixz="0"
+        iyy="0.0018117"
+        iyz="0"
+        izz="0.0016957" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/FLA_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.425 0.025 0"
+        rpy="1.532 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.044"/>      
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FLA_joint"
+    type="revolute">
+    <origin
+      xyz="-0.1715 0.075 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FLA_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="FLH_link">
+    <inertial>
+      <origin
+        xyz="-0.026428 0.0081065 -0.031643"
+        rpy="0 0 0" />
+      <mass
+        value="0.125" /> <!-- IT IS ACTUALLY 1.561-->
+      <inertia
+        ixx="0.0023398"
+        ixy="0.00021328"
+        ixz="-0.001565"
+        iyy="0.0037523"
+        iyz="0.00025536"
+        izz="0.001773" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.7 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/FLH_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.0 0.04 -0.125"
+        rpy="0 0 0" />
+      <geometry>
+        <capsule length="0.27" radius="0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FLH_joint"
+    type="continuous">
+    <origin
+      xyz="0.4275 0.0625 0"
+      rpy="0 0 0" />
+    <parent
+      link="FLA_link" />
+    <child
+      link="FLH_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="FLK_link">
+    <inertial>
+      <origin
+        xyz="0.093564 -0.0003826 -0.11724"
+        rpy="0 0 0" />
+      <mass
+        value="0.125" />
+      <inertia
+        ixx="0.0019186"
+        ixy="0"
+        ixz="0.0014742"
+        iyy="0.0031459"
+        iyz="0"
+        izz="0.0012478" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0. 0 -0."
+        rpy="0 0.7 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/FLK_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. -0.165"
+        rpy="0 0 0" />
+      <geometry>
+        <capsule length="0.27" radius="0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FLK_joint"
+    type="continuous">
+    <origin
+      xyz="-0. 0.05 -0.285"
+      rpy="0 0 0" />
+    <parent
+      link="FLH_link" />
+    <child
+      link="FLK_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link name="FLF_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0"/>
+        <geometry>
+            <sphere radius="0.02"/>
+        </geometry>
+    </visual>
+    <collision>
+        <origin xyz="0. 0.0 0.0"/>
+        <geometry>
+            <sphere radius="0.0"/>
+        </geometry>
+    </collision>
+  </link>
+  <joint name="FLF_joint" type="fixed">
+        <parent link="FLK_link"/>
+        <child link="FLF_link"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.32125"/>
+  </joint>
+   <link
+    name="FRA_link">
+    <inertial>
+      <origin
+        xyz="0.042267 -0.0017671 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="1.742" />
+      <inertia
+        ixx="0.00063635"
+        ixy="0"
+        ixz="0"
+        iyy="0.0018117"
+        iyz="0"
+        izz="0.0016957" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0.0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/FLA_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.425 -0.025 0"
+        rpy="1.532 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.044"/>      
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FRA_joint"
+    type="revolute">
+    <origin
+      xyz="-0.1715 -0.075 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FRA_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="FRH_link">
+    <inertial>
+      <origin
+        xyz="-0.026429 -0.0081065 -0.031643"
+        rpy="0 0 0" />
+      <mass
+        value="0.125" /><!-- IT IS ACTUALLY 1.561-->
+      <inertia
+        ixx="0.0023397"
+        ixy="-0.00021327"
+        ixz="-0.001565"
+        iyy="0.0037523"
+        iyz="-0.00025536"
+        izz="0.0017731" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.7 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/FRH_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.0 -0.04 -0.125"
+        rpy="0 0 0" />
+      <geometry>
+        <capsule length="0.27" radius="0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FRH_joint"
+    type="continuous">
+    <origin
+      xyz="0.4275 -0.0625 0"
+      rpy="0 0 0" />
+    <parent
+      link="FRA_link" />
+    <child
+      link="FRH_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="FRK_link">
+    <inertial>
+      <origin
+        xyz="0.093565 0.0003826 -0.11724"
+        rpy="0 0 0" />
+      <mass
+        value="0.125" />
+      <inertia
+        ixx="0.0019186"
+        ixy="0"
+        ixz="0.0014742"
+        iyy="0.0031459"
+        iyz="0"
+        izz="0.0012478" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0.7 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/FRK_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. -0.165"
+        rpy="0 0 0" />
+      <geometry>
+        <capsule length="0.27" radius="0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FRK_joint"
+    type="continuous">
+    <origin
+      xyz="-0. -0.05 -0.285"
+      rpy="0 0 0" />
+    <parent
+      link="FRH_link" />
+    <child
+      link="FRK_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link name="FRF_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0"/>
+        <geometry>
+            <sphere radius="0.02"/>
+        </geometry>
+    </visual>
+  </link>
+  <joint name="FRF_joint" type="fixed">
+        <parent link="FRK_link"/>
+        <child link="FRF_link"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.32125"/>
+  </joint>
+  <link
+    name="BLA_link">
+    <inertial>
+      <origin
+        xyz="-0.042267 0.0017671 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.742" />
+      <inertia
+        ixx="0.00063635"
+        ixy="0"
+        ixz="0"
+        iyy="0.0018117"
+        iyz="0"
+        izz="0.0016957" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/BLA_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.085 0.025 0"
+        rpy="1.532 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.044"/>      
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BLA_joint"
+    type="revolute">
+    <origin
+      xyz="-0.1715 0.075 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="BLA_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <link
+    name="BLH_link">
+    <inertial>
+      <origin
+        xyz="-0.026428 0.0081065 -0.031643"
+        rpy="0 0 0" />
+      <mass
+        value="0.125" /><!-- IT IS ACTUALLY 1.561-->
+      <inertia
+        ixx="0.0023398"
+        ixy="0.00021328"
+        ixz="-0.001565"
+        iyy="0.0037523"
+        iyz="0.00025536"
+        izz="0.001773" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.7 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/BLH_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+   <collision>
+      <origin
+        xyz="0.0 0.04 -0.125"
+        rpy="0 0 0" />
+      <geometry>
+        <capsule length="0.27" radius="0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BLH_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0845 0.0625 0"
+      rpy="0 0 0" />
+    <parent
+      link="BLA_link" />
+    <child
+      link="BLH_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+
+  <link
+    name="BLK_link">
+    <inertial>
+      <origin
+        xyz="0.093564 -0.0003826 -0.11724"
+        rpy="0 0 0" />
+      <mass
+        value="0.125" />
+      <inertia
+        ixx="0.0019186"
+        ixy="0.0"
+        ixz="0.0014742"
+        iyy="0.0031459"
+        iyz="0.0"
+        izz="0.0012478" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0.7 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/BLK_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. -0.165"
+        rpy="0 0 0" />
+      <geometry>
+        <capsule length="0.27" radius="0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BLK_joint"
+    type="continuous">
+    <origin
+      xyz="-0. 0.05 -0.285"
+      rpy="0 0 0" />
+    <parent
+      link="BLH_link" />
+    <child
+      link="BLK_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link name="BLF_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0"/>
+        <geometry>
+            <sphere radius="0.02"/>
+        </geometry>
+    </visual>
+    <collision>
+        <origin xyz="0. 0.0 0.0"/>
+        <geometry>
+            <sphere radius="0.0"/>
+        </geometry>
+    </collision>
+  </link>
+  <joint name="BLF_joint" type="fixed">
+        <parent link="BLK_link"/>
+        <child link="BLF_link"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.32125"/>
+  </joint>
+  <link
+    name="BRA_link">
+    <inertial>
+      <origin
+        xyz="-0.042267 -0.0017672 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="1.742" />
+      <inertia
+        ixx="0.00063635"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.0018117"
+        iyz="0.0"
+        izz="0.0016957" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/BRA_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.085 -0.025 0"
+        rpy="1.532 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.044"/>      
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BRA_joint"
+    type="revolute">
+    <origin
+      xyz="-0.1715 -0.075 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="BRA_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="BRH_link">
+    <inertial>
+      <origin
+        xyz="-0.026429 -0.0081065 -0.031643"
+        rpy="0 0 0" />
+      <mass
+        value="0.125" /><!-- IT IS ACTUALLY 1.561-->
+      <inertia
+        ixx="0.0023397"
+        ixy="-0.00021327"
+        ixz="-0.001565"
+        iyy="0.0037523"
+        iyz="-0.00025536"
+        izz="0.0017731" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 -0.7 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/BRH_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.0 -0.04 -0.125"
+        rpy="0 0 0" />
+      <geometry>
+        <capsule length="0.27" radius="0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BRH_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0845 -0.0625 0"
+      rpy="0 0 0" />
+    <parent
+      link="BRA_link" />
+    <child
+      link="BRH_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="BRK_link">
+    <inertial>
+      <origin
+        xyz="0.093565 0.0003826 -0.11724"
+        rpy="0 0 0" />
+      <mass
+        value="0.125" />
+      <inertia
+        ixx="0.0019186"
+        ixy="0.0"
+        ixz="0.0014742"
+        iyy="0.0031459"
+        iyz="0.0"
+        izz="0.0012478" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0.7 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/BRK_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. -0.165"
+        rpy="0 0 0" />
+      <geometry>
+        <capsule length="0.27" radius="0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BRK_joint"
+    type="continuous">
+    <origin
+      xyz="-0. -0.05 -0.285"
+      rpy="0 0 0" />
+    <parent
+      link="BRH_link" />
+    <child
+      link="BRK_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link name="BRF_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0"/>
+        <geometry>
+            <sphere radius="0.02"/>
+        </geometry>
+    </visual>
+    <collision>
+        <origin xyz="0. 0.0 0.0"/>
+        <geometry>
+            <sphere radius="0.0"/>
+        </geometry>
+    </collision>
+  </link>
+  <joint name="BRF_joint" type="fixed">
+        <parent link="BRK_link"/>
+        <child link="BRF_link"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.32125"/>
+  </joint>
+</robot>
