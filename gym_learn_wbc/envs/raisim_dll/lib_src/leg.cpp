@@ -47,7 +47,7 @@ void _inverse_kinematics_FL(Eigen::Vector3d &thetas, Eigen::Vector3d &end_effect
     int isValid = bound_end_eff_pos(x,y,z);
     if(!isValid)
     {
-        std::cout<<"invalid point: "<<x<<","<<y<<","<<z<<std::endl;
+       // std::cout<<"invalid point: "<<x<<","<<y<<","<<z<<std::endl;
     }
     double r, th23, th1, th2, th3,t;
     r = sqrt(y*y + z*z -l1*l1);
@@ -100,7 +100,7 @@ void _inverse_kinematics_FR(Eigen::Vector3d &thetas, Eigen::Vector3d &end_effect
     int isValid = bound_end_eff_pos(x,y,z);
     if(!isValid)
     {
-        std::cout<<"invalid point: "<<x<<","<<y<<","<<z<<std::endl;
+       // std::cout<<"invalid point: "<<x<<","<<y<<","<<z<<std::endl;
     }
     double r, th23, th1, th2, th3,t;
     r = sqrt(y*y + z*z -l1*l1);
@@ -152,7 +152,7 @@ void _inverse_kinematics_BL(Eigen::Vector3d &thetas, Eigen::Vector3d &end_effect
     int isValid = bound_end_eff_pos(x,y,z);
     if(!isValid)
     {
-        std::cout<<"invalid point: "<<x<<","<<y<<","<<z<<std::endl;
+        //std::cout<<"invalid point: "<<x<<","<<y<<","<<z<<std::endl;
     }
     double r, th23, th1, th2, th3,t;
     r = sqrt(y*y + z*z -l1*l1);
@@ -204,7 +204,7 @@ void _inverse_kinematics_BR(Eigen::Vector3d &thetas, Eigen::Vector3d &end_effect
     int isValid = bound_end_eff_pos(x,y,z);
     if(!isValid)
     {
-        std::cout<<"invalid point: "<<x<<","<<y<<","<<z<<std::endl;
+       // std::cout<<"invalid point: "<<x<<","<<y<<","<<z<<std::endl;
     }
     double r, th23, th1, th2, th3,t;
     r = sqrt(y*y + z*z -l1*l1);

@@ -228,11 +228,10 @@ while(step_no <no_of_steps)
   }
 
 //std::cout<<"\nAvg_vel_values:\n";
-*(state) = velocity_target[0];
-*(state+1) = velocity_target[1];
+
 for(int i=0;i<10;i++)
 {  //std::cout<<avg_vel_values[i]<<"\t";
-  *(state+i+2) = avg_vel_values[i];}
+  *(state+i) = avg_vel_values[i];}
 
 }}
 
@@ -246,6 +245,19 @@ void _reset(float base_initial_pos[3])
                                         0.0, 0.0, 0.0, //leg 2
                                         0.0, 0.0, 0.0, //leg 3
                                         0.0, 0.0, 0.0}); //leg 4
+  stoch->setGeneralizedForce(Eigen::VectorXd::Zero(stoch->getDOF()));
   // world.integrate1();
   // world.integrate2();
 }}
+
+extern "C"{
+  
+void _close()
+
+{
+  auto vis = raisim::OgreVis::get();
+  vis->closeApp();
+
+}
+
+}
