@@ -144,7 +144,9 @@ void ToEulerAngles(double euler[3],double q[4]) {
 
 
 extern "C"{
-void _sim(double*state,long int no_of_steps,double omega,double radius,bool render,float velocity_target[2])
+void _sim(double*state,long int no_of_steps,
+	      double omega,double radius,
+	      bool render,float velocity_target[2])
 {
 auto vis = raisim::OgreVis::get();
 
@@ -173,6 +175,7 @@ while(step_no <no_of_steps)
     bool paused_ = vis->getPaused();
     while (time < 0 && (!(takeNSteps_ == 0 && paused_) || !paused_)) 
     {
+      
       trot_test(stoch, omega, radius, ctime);
       world.integrate1(); 
       world.integrate2();

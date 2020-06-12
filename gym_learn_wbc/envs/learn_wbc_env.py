@@ -32,8 +32,8 @@ class Learn_wbcEnv(gym.Env):
     self.initial_base[2] = 0.6
 
     self.learning_steps = learning_steps
-    self.omega_range = [-10,10]
-    self.radius_range = [0,0.21]
+    self.omega_range = [-5,5]
+    self.radius_range = [0.1,0.21]
     
     self.avg_velocity_limits = [-1.5,1.5]
     '''
@@ -79,8 +79,11 @@ class Learn_wbcEnv(gym.Env):
     3.return reward,state,wether the model has reached saturation(ie learnt)
     '''
 
-    omega = c_double(action[0]*self.omega_range[1])
-    radius = c_double((action[1]+1)*self.radius_range[1]/2.0)
+    omega = c_double(0.5*( (self.omega_range[1]-self.omega_range[0])*action[0]
+                          +(self.omega_range[1]+self.omega_range[0])))
+
+    radius = c_double(0.5*((self.radius_range[1]-self.radius_range[0])*action[1]
+                          +(self.radius_range[1]+self.radius_range[0])))
     state = (c_double*10)()
     target_velocity = (c_float*2)()
     target_velocity[0] = self.target_velocity[0];
@@ -91,18 +94,18 @@ class Learn_wbcEnv(gym.Env):
                     target_velocity)
 
     state = np.array(state)
-    print("Vx:",state[0],"Vy:",state[1])
+    print("avgVx:",state[0],"avgVy:",state[1])
     reward = self.calculate_reward(state[0:2])
     #print("reward:",reward)
 
     #clipping
     state[0:2] = np.clip(state[0:2],self.avg_velocity_limits[0],self.avg_velocity_limits[1])
-    state[2:3] = np.clip(state[2:3],self.avg_velocity_error_limits[1],self.avg_velocity_error_limits[1])
-    state[3:4] = np.clip(state[3:4],self.avg_velocity_error_limits[2],self.avg_velocity_error_limits[3])
+    state[2:3] = np.clip(state[2:3],-1*self.avg_velocity_error_limits[1],self.avg_velocity_error_limits[1])
+    state[3:4] = np.clip(state[3:4],-1*self.avg_velocity_error_limits[3],self.avg_velocity_error_limits[3])
     state[4:7] = np.clip(state[4:7],-np.pi/2,np.pi/2)
     state[7:10]= np.clip(state[7:10],self.avg_ang_velocity_limits[0],self.avg_ang_velocity_limits[1])
 
-    #normalizing 
+    #normalizing _ only for symmetrical limits 
     state[0:2] = (1/self.avg_velocity_limits[1])*state[0:2]
     state[2:3] = (1/self.avg_velocity_error_limits[1])*state[2:3]
     state[3:4] = (1/self.avg_velocity_error_limits[3])*state[3:4]
@@ -130,7 +133,9 @@ class Learn_wbcEnv(gym.Env):
     1.reset simulation parameters
     '''
     raisim_dll._reset(self.initial_base)
-    initial_state = self.step([-1,-1])[0]
+    radius_zero_action =( self.radius_range[0] + self.radius_range[1] )/(self.radius_range[0] - self.radius_range[1])
+    omega_zero_action =( self.omega_range[0] + self.omega_range[1] )/(self.omega_range[0] - self.omega_range[1])
+    initial_state = self.step([omega_zero_action,radius_zero_action])[0]
     #print("reset")
     return initial_state
     

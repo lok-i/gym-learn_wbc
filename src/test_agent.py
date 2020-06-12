@@ -35,8 +35,10 @@ for i_episode in range(10):
 	time.sleep(0.001)
 	action,_ = model.predict(state)
 	state,reward,done,_ = env.step(action)
-	print("Omega_predicted:",action[0]*env.omega_range[1])
-	print("Radius_predicted:",(action[1]+1)*env.radius_range[1]/2.0)
+	print("Omega_predicted:",0.5*( (env.omega_range[1]-env.omega_range[0])*action[0]
+                          +(env.omega_range[1]+env.omega_range[0])))
+	print("Radius_predicted:",0.5*((env.radius_range[1]-env.radius_range[0])*action[1]
+                          +(env.radius_range[1]+env.radius_range[0])))
 	print('Reward:\n',reward,"\n")
 
 	
